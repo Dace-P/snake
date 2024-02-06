@@ -1,0 +1,2 @@
+class apple:
+    print
