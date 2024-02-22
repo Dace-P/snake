@@ -1,32 +1,38 @@
 class board:
 
     def __init__(self, height, width):
-        # TODO : Define variables as needed
-        self.height = height
-        self.width = width
+        # Constructor to define dimensions, along with space for a border
+        self.height = height + 2
+        self.width = width + 2
+        # Initializes the list for the board to be in
         self.board = []
-        print("This be working")
 
     def boardmatrix(self):
-        self.board = [['  ' for i in range(self.height+2)] for j in range(self.width+2)]
-        self.board[0][0] = '+ '
-        self.board[0][self.width+1] = '+ '
-        self.board[self.height+1][0] = '+ '
-        self.board[self.height+1][self.width+1] = '+ '
 
-        for i in range(1, self.width+1):
-            self.board[0][i] = "──"
-            self.board[self.width+1][i] = "──"
-        for j in range(1, self.height+1):
-            self.board[j][0] = "| "
-            self.board[j][self.height+1] = "| "
+        # Initializes the 2d list to make the board with
+        self.board = [['  ' for i in range(self.width)] for j in range(self.height)] 
+
+        # Marks the endpoints of the board
+        self.board[0][0] = '+─'
+        self.board[self.height-1][0] = '+─'
+        self.board[0][self.width-1] = '+'
+        self.board[self.height-1][self.width-1] = '+'
+
+        # Adds the bounds of the board visibly
+        for a in range(1, self.width-1):
+            self.board[0][a] = '──'
+            self.board[self.height-1][a] = '──'
+        for b in range(1, self.height-1):
+            self.board[b][0] = '| '
+            self.board[b][self.width-1] = '| '
+
+        
 
     def render(self):
-        # TODO: Initialize the board and display on the commandline
         self.boardmatrix()
-        
-        for i in range(self.width+2):
-            for j in range(self.height+2):
+
+        for i in range(self.height):
+            for j in range(self.width):
                 print(' '.join(self.board[i][j]), end="")
             print()
 
