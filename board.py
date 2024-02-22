@@ -29,8 +29,10 @@ class board:
         
 
     def render(self):
+        # Initializes the empty board
         self.boardmatrix()
 
+        # Prints out the empty board
         for i in range(self.height):
             for j in range(self.width):
                 print(' '.join(self.board[i][j]), end="")
