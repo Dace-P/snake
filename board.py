@@ -1,6 +1,4 @@
 class board:
-    height = 0
-    width = 0
 
     def __init__(self, height, width):
         # TODO : Define variables as needed
@@ -10,14 +8,28 @@ class board:
         print("This be working")
 
     def boardmatrix(self):
-        self.board = [[None]*self.width]*self.height
+        self.board = [['  ' for i in range(self.height+2)] for j in range(self.width+2)]
+        self.board[0][0] = '+ '
+        self.board[0][self.width+1] = '+ '
+        self.board[self.height+1][0] = '+ '
+        self.board[self.height+1][self.width+1] = '+ '
+
+        for i in range(1, self.width+1):
+            self.board[0][i] = "──"
+            self.board[self.width+1][i] = "──"
+        for j in range(1, self.height+1):
+            self.board[j][0] = "| "
+            self.board[j][self.height+1] = "| "
 
     def render(self):
         # TODO: Initialize the board and display on the commandline
-        print("The height is: " + str(self.height))
-        print("The width is: " + str(self.width))
-        print("This also be working")
+        self.boardmatrix()
+        
+        for i in range(self.width+2):
+            for j in range(self.height+2):
+                print(' '.join(self.board[i][j]), end="")
+            print()
 
-board = board(10,15)
+board = board(10,10)
 board.render()
 board.boardmatrix()
